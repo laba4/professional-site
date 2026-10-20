@@ -1,0 +1,22 @@
+---
+import "@/assets/app.css";
+import Container from "@/components/Container.astro";
+import Footer from "@/components/Footer.astro";
+import Head from "@/components/Head.astro";
+import Navbar from "@/components/Navbar.astro";
+---
+
+<!doctype html>
+<html lang="en" x-data="{ theme: localStorage.getItem('theme') || 'light' }" :data-theme="theme" x-init="$watch('theme', val => localStorage.setItem('theme', val))">
+	<head>
+		<meta charset="UTF-8" />
+    <Head title="Lars Baumeler | Cloud Engineer" />
+	</head>
+	<body class="flex flex-col min-h-screen">
+    <Navbar />
+    <Container>
+      <slot />
+    </Container>
+    <Footer />
+	</body>
+</html>
