@@ -1,0 +1,20 @@
+---
+import Link from "@/components/Link.astro";
+import ArrowBox from "@/components/icons/ArrowBox.astro";
+
+interface Props {
+  href?: string;
+}
+
+const { href, ...rest } = Astro.props;
+const isExternal = !href?.startsWith("/");
+---
+
+<Link
+  href={href}
+  class="link link-warning inline-flex items-center gap-1"
+  {...rest}
+>
+  <slot />
+  {isExternal && <ArrowBox />}
+</Link>

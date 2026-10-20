@@ -1,0 +1,17 @@
+---
+import Link from "@/components/Link.astro";
+
+interface Props {
+  href?: string;
+}
+
+const { href, ...rest } = Astro.props;
+---
+
+<Link
+  href={href}
+  class="link link-hover"
+  {...rest}
+>
+  <slot />
+</Link>
