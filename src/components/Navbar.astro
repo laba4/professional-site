@@ -1,14 +1,24 @@
 ---
-import Sun from '@/components/icons/Sun.astro';
-import Moon from '@/components/icons/Moon.astro';
+const links = [
+  { href: '/posts', label: 'Posts' },
+  { href: '/uses', label: 'Uses' },
+  { href: '/books', label: 'Books' },
+  { href: '/credentials', label: 'Credentials' },
+];
+
+const isActive = (href: string) => Astro.url.pathname.startsWith(href);
 ---
 
 <div class="drawer z-100">
   <input id="my-drawer-2" type="checkbox" class="drawer-toggle" />
-  <div class="drawer-content flex flex-col shadow-sm">
+  <div class="drawer-content flex flex-col">
     <nav class="navbar bg-base-100 max-w-7xl mx-auto">
       <div class="flex-none lg:hidden">
-        <label for="my-drawer-2" aria-label="open sidebar" class="btn btn-square btn-ghost">
+        <label
+          for="my-drawer-2"
+          aria-label="open sidebar"
+          class="btn btn-square btn-ghost"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -30,26 +40,35 @@ import Moon from '@/components/icons/Moon.astro';
         </a>
       </div>
       <div class="hidden flex-none lg:block">
-        <ul class="menu menu-horizontal px-1">
-          <li><a href="/posts">Posts</a></li>
-          <li><a href="/uses">Uses</a></li>
-          <li><a href="/books">Books</a></li>
-          <li><a href="/lessons">Lessons</a></li>
+        <ul class="menu menu-horizontal gap-1 px-1">
+          {links.map(({ href, label }) => (
+            <li>
+              <a
+                href={href}
+                class:list={{ 'bg-base-content/10': isActive(href) }}
+              >
+                {label}
+              </a>
+            </li>
+          ))}
         </ul>
       </div>
-      <button class="btn btn-ghost" aria-label="toggle theme" @click="theme = theme === 'light' ? 'dark' : 'light'">
-        <Sun show="theme === 'light'" />
-        <Moon show="theme === 'dark'" />
-      </button>
     </nav>
   </div>
   <div class="drawer-side">
-    <label for="my-drawer-2" aria-label="close sidebar" class="drawer-overlay"></label>
-    <ul class="menu bg-base-200 min-h-full w-80 p-4">
-      <li><a href="/posts">Posts</a></li>
-      <li><a href="/uses">Uses</a></li>
-      <li><a href="/books">Books</a></li>
-      <li><a href="/lessons">Lessons</a></li>
+    <label
+      for="my-drawer-2"
+      aria-label="close sidebar"
+      class="drawer-overlay"
+    ></label>
+    <ul class="menu gap-1 bg-base-200 min-h-full w-80 p-4">
+      {links.map(({ href, label }) => (
+        <li>
+          <a href={href} class:list={{ 'bg-base-content/10': isActive(href) }}>
+            {label}
+          </a>
+        </li>
+      ))}
     </ul>
   </div>
 </div>

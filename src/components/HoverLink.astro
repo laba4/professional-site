@@ -1,17 +1,12 @@
 ---
-import Link from "@/components/Link.astro";
+import type { HTMLAttributes } from 'astro/types';
+import Link from '@/components/Link.astro';
 
-interface Props {
-  href?: string;
-}
+type Props = HTMLAttributes<'a'>;
 
 const { href, ...rest } = Astro.props;
 ---
 
-<Link
-  href={href}
-  class="link link-hover"
-  {...rest}
->
+<Link href={href} class="link link-hover" {...rest}>
   <slot />
 </Link>

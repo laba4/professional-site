@@ -1,18 +1,18 @@
 // @ts-check
-import { defineConfig } from "astro/config";
-import tailwindcss from "@tailwindcss/vite";
+import { defineConfig } from 'astro/config';
+import tailwindcss from '@tailwindcss/vite';
 
-import mdx from "@astrojs/mdx";
+import mdx from '@astrojs/mdx';
 
-import alpinejs from "@astrojs/alpinejs";
+import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: "https://www.larsbaumeler.com",
-  base: "/",
+  site: 'https://larsbaumeler.com',
+  base: '/',
 
   vite: {
     plugins: [tailwindcss()],
   },
 
-  integrations: [mdx(), alpinejs()],
+  integrations: [mdx(), sitemap()],
 });

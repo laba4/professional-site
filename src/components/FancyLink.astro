@@ -1,13 +1,12 @@
 ---
-import Link from "@/components/Link.astro";
-import ArrowBox from "@/components/icons/ArrowBox.astro";
+import type { HTMLAttributes } from 'astro/types';
+import Link from '@/components/Link.astro';
+import ArrowBox from '@/components/icons/ArrowBox.astro';
 
-interface Props {
-  href?: string;
-}
+type Props = HTMLAttributes<'a'>;
 
 const { href, ...rest } = Astro.props;
-const isExternal = !href?.startsWith("/");
+const isExternal = /^https?:\/\//.test(href ?? '');
 ---
 
 <Link
