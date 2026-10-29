@@ -4,13 +4,20 @@ import Container from '@/components/Container.astro';
 import Footer from '@/components/Footer.astro';
 import Head from '@/components/Head.astro';
 import Navbar from '@/components/Navbar.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title, description } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en-GB">
   <head>
     <meta charset="UTF-8" />
-    <Head title="Lars Baumeler | Cloud Engineer" />
+    <Head title={title} description={description} />
   </head>
   <body class="flex flex-col min-h-screen">
     <Navbar />

@@ -8,11 +8,14 @@ const posts = (await getCollection('posts', ({ data }) => !data.draft)).sort(
 );
 ---
 
-<ProseLayout>
+<ProseLayout
+  title="Posts"
+  description="Technical write-ups and insights into my professional journey."
+>
   <h1>Posts</h1>
   {posts.length > 0 ? (
     <>
-      <p>A list of my posts sorted by publish date</p>
+      <p>My posts, sorted by publish date</p>
       <ul>
         {posts.map((post) => (
           <li>

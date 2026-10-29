@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://larsbaumeler.com/sitemap-index.xml
