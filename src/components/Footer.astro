@@ -1,28 +1,33 @@
 ---
-import GitHub from "@/components/icons/GitHub.astro";
+import GitHub from '@/components/icons/GitHub.astro';
 import Daisy from '@/assets/daisy.svg?url';
-import Link from "@/components/HoverLink.astro";
+import Link from '@/components/HoverLink.astro';
 ---
 
 <footer class="footer footer-horizontal footer-center gap-4 bg-base-200 text-base-content rounded p-10 mt-auto">
   <nav class="grid grid-flow-col gap-4">
-    <Link href="/privacy">
-      Privacy
-    </Link>
-    <Link href="/contact">
-      Contact
-    </Link>
+    <Link href="/privacy">Privacy</Link>
+    <Link href="/contact">Contact</Link>
   </nav>
   <nav>
     <div class="grid grid-flow-col gap-4 items-center">
-      <a href="https://github.com/laba4" target="_blank">
+      <Link href="https://github.com/laba4" aria-label="GitHub">
         <GitHub />
-      </a>
+      </Link>
     </div>
   </nav>
   <aside>
     <p class="flex items-center gap-1">
-      Site built with <a class="link link-hover" href="https://astro.build" target="_blank" rel="noopener noreferrer">Astro</a> and <img src={Daisy} alt="daisyUI logo" title="daisyUI" class="w-6 h-6" />
+      Site built with{' '}
+      <a
+        class="link link-hover"
+        href="https://astro.build"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Astro
+      </a>{' '}
+      and <img src={Daisy} alt="daisyUI logo" title="daisyUI" class="w-6 h-6" />
     </p>
   </aside>
 </footer>

@@ -3,18 +3,25 @@ import { getCollection } from 'astro:content';
 import ProseLayout from '@/layouts/ProseLayout.astro';
 import Link from '@/components/FancyLink.astro';
 
-const posts = (await getCollection('posts'))
-  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+const posts = (await getCollection('posts', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.date.getTime() - a.data.date.getTime(),
+);
 ---
 
 <ProseLayout>
   <h1>Posts</h1>
-  <p>All of my posts sorted by most recent change</p>
-  <ul>
-    {posts.map(post => (
-      <li>
-        <Link href={`/posts/${post.id}`}>{post.data.title}</Link>
-      </li>
-    ))}
-  </ul>
+  {posts.length > 0 ? (
+    <>
+      <p>A list of my posts sorted by publish date</p>
+      <ul>
+        {posts.map((post) => (
+          <li>
+            <Link href={`/posts/${post.id}`}>{post.data.title}</Link>
+          </li>
+        ))}
+      </ul>
+    </>
+  ) : (
+    <p>There are no posts to read yet. Come back later.</p>
+  )}
 </ProseLayout>

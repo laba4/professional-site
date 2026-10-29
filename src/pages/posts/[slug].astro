@@ -4,8 +4,8 @@ import ProseLayout from '@/layouts/ProseLayout.astro';
 import { getCollection, render } from 'astro:content';
 
 export async function getStaticPaths() {
-  const posts = await getCollection('posts');
-  return posts.map(post => ({
+  const posts = await getCollection('posts', ({ data }) => !data.draft);
+  return posts.map((post) => ({
     params: { slug: post.id },
     props: { post },
   }));
@@ -18,9 +18,14 @@ const { Content } = await render(post);
 <ProseLayout>
   <div class="flex items-center gap-2">
     <Calendar />
-    <p>{new Date(post.data.date).toLocaleDateString('de-CH', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+    <p>
+      {new Date(post.data.date).toLocaleDateString('en-GB', {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+      })}
+    </p>
   </div>
   <h1>{post.data.title}</h1>
   <Content />
 </ProseLayout>
-

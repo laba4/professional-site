@@ -1,0 +1,19 @@
+{
+  "name": "Professional Site",
+  "dockerComposeFile": ["../compose.yaml"],
+  "service": "astro",
+  "workspaceFolder": "/app",
+  "shutdownAction": "none",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "bradlc.vscode-tailwindcss",
+        "astro-build.astro-vscode",
+        "esbenp.prettier-vscode"
+      ],
+      "settings": {
+        "editor.quickSuggestions": { "strings": "on" }
+      }
+    }
+  }
+}
