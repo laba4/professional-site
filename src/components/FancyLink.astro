@@ -6,7 +6,7 @@ import ArrowBox from '@/components/icons/ArrowBox.astro';
 type Props = HTMLAttributes<'a'>;
 
 const { href, ...rest } = Astro.props;
-const isExternal = /^https?:\/\//.test(href ?? '');
+const isExternal = /^https?:\/\//.test(String(href ?? ''));
 ---
 
 <Link
