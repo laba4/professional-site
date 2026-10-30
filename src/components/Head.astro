@@ -9,7 +9,7 @@ const {
   description = 'Lars Baumeler, a Cloud Engineer from Switzerland with a focus on AWS, Infrastructure as Code and Linux.',
 } = Astro.props;
 
-const fullTitle = `${Astro.site?.hostname} › ${title ?? 'Home'}`;
+const fullTitle = `${Astro.site?.hostname} > ${title ?? 'Home'}`;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 
