@@ -11,9 +11,8 @@ const isExternal = /^https?:\/\//.test(String(href ?? ''));
 
 <Link
   href={href}
-  class="link link-warning inline-flex items-center gap-1"
+  class="link link-warning"
   {...rest}
 >
-  <slot />
-  {isExternal && <ArrowBox />}
+  <slot />{isExternal && <ArrowBox />}
 </Link>
