@@ -1,8 +1,21 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
+
+interface Props {
+  title?: string;
+  description?: string;
+  // Set automatically when used as an MDX layout
+  frontmatter?: { title?: string; description?: string };
+}
+
+const {
+  frontmatter,
+  title = frontmatter?.title,
+  description = frontmatter?.description,
+} = Astro.props;
 ---
 
-<BaseLayout>
+<BaseLayout title={title} description={description}>
   <div class="prose lg:prose-lg lg:prose-h1:text-4xl prose-a:text-warning w-full mx-auto">
     <slot />
   </div>

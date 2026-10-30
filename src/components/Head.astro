@@ -1,26 +1,32 @@
 ---
-const { title = 'My Astro Website', ...props } = Astro.props;
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title,
+  description = 'Lars Baumeler, a Cloud Engineer from Switzerland with a focus on AWS, Infrastructure as Code and Linux.',
+} = Astro.props;
+
+const fullTitle = title
+  ? `${title} | Lars Baumeler`
+  : 'Lars Baumeler | Cloud Engineer';
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 
-<!-- sitemap tbd -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>{fullTitle}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonicalURL} />
 <link rel="sitemap" href="/sitemap-index.xml" />
 <link rel="icon" href="/favicon.ico" sizes="any" />
-<title>{title}</title>
-<meta name="description" content="Welcome to my new Astro site!" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<!-- Web analytics: enable once the GoatCounter account exists and privacy.md is updated -->
-<!-- <script
-  data-goatcounter="https://my-account.goatcounter.com/count"
-  async
-  src="//gc.zgo.at/count.js"
-></script> -->
-
-<!-- Open Graph tags? -->
-<meta property="og:title" content="My New Astro Website" />
+<!-- Open Graph -->
+<meta property="og:title" content={fullTitle} />
 <meta property="og:type" content="website" />
-<meta property="og:url" content="http://www.example.com/" />
-<meta property="og:description" content="Welcome to my new Astro site!" />
+<meta property="og:url" content={canonicalURL} />
+<meta property="og:description" content={description} />
 <!-- <meta
   property="og:image"
   content="https://www.example.com/_astro/seo-banner.BZD7kegZ.webp"
