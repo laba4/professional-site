@@ -45,7 +45,9 @@ const isActive = (href: string) => Astro.url.pathname.startsWith(href);
             <li>
               <a
                 href={href}
-                class:list={{ 'bg-base-content/10 text-base-content': isActive(href) }}
+                class:list={{
+                  'bg-base-content/10 text-base-content': isActive(href),
+                }}
               >
                 {label}
               </a>
@@ -66,7 +68,9 @@ const isActive = (href: string) => Astro.url.pathname.startsWith(href);
         <li>
           <a
             href={href}
-            class:list={{ 'bg-base-content/10 text-base-content': isActive(href) }}
+            class:list={{
+              'bg-base-content/10 text-base-content': isActive(href),
+            }}
           >
             {label}
           </a>
